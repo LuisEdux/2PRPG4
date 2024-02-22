@@ -1,43 +1,44 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
-
 #include <iostream>
 #include "Player/Player.h"
 #include "Enemy/Enemy.h"
 
-using namespace std;
-
 int main() {
-    Player *player = new Player("Victor", 100, 8, 4, 10);
-    Enemy *enemy = new Enemy("Estudiante de Redes", 50, 5, 2, 5, 10);
+    Player *player = new Player("Alexis", 100, 8, 3, 10);
+    Enemy *enemy = new Enemy("Destello absoluto", 50, 6, 2, 5, 10);
+    int cont = 0;
+    int auxPlayer, auxEnemy;
 
-    cout << player->toString() << endl;
-    cout << enemy->toString() << endl;
+    while(player->getHealth() > 0 && enemy->getHealth() > 0){
+        auxPlayer = player->getHealth();
+        auxEnemy = enemy->getHealth();
 
-    cout << "=====================" << endl;
+        cont++;
+        cout<<"\n\n\tTurno "<<cont<<"."<<endl;
 
-    for (int round = 1; player->getHealth() > 0 && enemy->getHealth() > 0; ++round) {
-     cout << "ronda " << round << endl;
 
-    player->doAttack(enemy);
+        cout<<player->toString()<<endl;
+        cout<<enemy->toString()<<endl;
 
-    if (enemy->getHealth() <= 0) {
-     cout << enemy->getName() << " Ha muerto" << endl;
-     break;
-      }
+        player->doAttack(enemy);
+        enemy->doAttack(player);
 
-      enemy->doAttack(player);
+        cout<<"\n";
 
-      if (player->getHealth() <= 0) {
-      cout << player->getName() << " Ha muerto" << endl;
-      break;
-      }
+        cout<<"\t"<<player->getName()<<" ha atacado a "<<enemy->getName()<<" con "<<auxEnemy - enemy->getHealth()<<" puntos de vida"<<endl;
+        cout<<"\t"<<enemy->getName()<<" ha atacado a "<<player->getName()<<" con "<<auxPlayer - player->getHealth()<<" puntos de vida"<<endl<<endl;
 
-      cout << player->toString() << endl;
-      cout << enemy->toString() << endl;
-      }
-       delete player;
-       delete enemy;
-       return 0;
-     }
+        cout<<"---------------------";
+    }
+
+    cout<<"\n"<<player->toString()<<endl;
+    cout<<enemy->toString()<<endl;
+
+    if(auxPlayer <= 0) cout<<"\n\tEl jugador ha perdido ";
+    else cout<<"\n\tEl enemigo ha perdido ";
+
+    cout<<"en "<<cont<<" turnos."<<endl;
+
+    delete player;
+    delete enemy;
+    return 0;
+}
