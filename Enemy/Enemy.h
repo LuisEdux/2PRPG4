@@ -15,6 +15,8 @@ public:
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
     int getExperience();
+
+    double getMaxHealth();
 };
 
 

@@ -26,7 +26,7 @@ public:
     int getAttack();
     int getDefense();
     int getSpeed();
-    string toString();
+    string toString() const;
 };
 
 

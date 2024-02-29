@@ -1,6 +1,4 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
+
 
 #include "Player.h"
 
@@ -29,4 +27,12 @@ void Player::gainExperience(int exp) {
         levelUp();
         experience = 100-experience;
     }
+}
+
+void Player::setDefense(double d) {
+
+}
+
+double Player::getBaseDefense() {
+    return 0;
 }

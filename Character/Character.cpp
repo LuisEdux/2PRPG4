@@ -31,6 +31,6 @@ int Character::getSpeed() {
     return speed;
 }
 
-string Character::toString() {
+string Character::toString() const {
     return "Name: " + name + "\nHealth: " + to_string(health) + "\nAttack: " + to_string(attack) + "\nDefense: " + to_string(defense) + "\nSpeed: " + to_string(speed);
 }

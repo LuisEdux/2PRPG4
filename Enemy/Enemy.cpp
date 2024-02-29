@@ -1,6 +1,4 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
+
 
 #include "Enemy.h"
 #include "../Utils.h"
@@ -25,4 +23,8 @@ void Enemy::takeDamage(int damage) {
 
 int Enemy::getExperience() {
     return experience;
+}
+
+double Enemy::getMaxHealth() {
+    return 0;
 }

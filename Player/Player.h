@@ -21,6 +21,9 @@ public:
 
     void gainExperience(int exp);
     //TODO: Implement use object
+    void setDefense(double d);
+
+    double getBaseDefense();
 };
 
 
