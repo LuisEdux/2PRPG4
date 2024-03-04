@@ -12,18 +12,18 @@ int main() {
     enemies.push_back(Enemy("Ludex Gundyr", 20, 5, 2, 5, 10));
     enemies.push_back(Enemy("Vordt", 30, 7, 3, 7, 15));
 
-    Player *player = new Player("Winter", 12, 12, 4, 10);
+    Player *player = new Player("Winter", 100, 12, 4, 10);
 
     cout << player->toString() << endl << endl;
 
     while (player->getHealth() > 0 && !enemies.empty()) {
     cout << "Turno del jugador --> selecciona una opcion: " << endl;
   cout << "1. Atacar\n";
-   cout << "2. Defender Aumenta un 20% la Defensa\n";
+   cout << "2. Defender n";
 
   int choice;
    do {
-   cout << "Accion (1-2): ";
+   cout << " Accion (1-2): ";
    cin >> choice;
   } while (choice < 1 || choice > 2);
 
@@ -69,7 +69,7 @@ player->doAttack(&enemies[enemyChoice - 1]);
 
   player->setDefense(player->getBaseDefense());
   cout << player->toString() << endl;
-  for (const Enemy& enemy : enemies) {
+  for (Enemy enemy : enemies) {
   cout << enemy.toString() << endl;
   }
  cout << endl;
