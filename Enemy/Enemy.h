@@ -26,6 +26,12 @@ public:
     int getExperience();
 
     double getMaxHealth();
+
+    void setAttack(double d);
+
+    double getBaseAttack();
+
+    int getBlockChance();
 };
 
 

@@ -27,12 +27,17 @@ public:
     Action takeAction(vector<Enemy*> enemies);
 
     void gainExperience(int exp);
+    void defend() {
+        defense *= 1.2;
+    }
 
-    //TODO: Implement use object
     void setDefense(double d);
 
     double getBaseDefense();
 };
+
+    //TODO: Implement use object
+
 
 
 #endif //RPG_PLAYER_H

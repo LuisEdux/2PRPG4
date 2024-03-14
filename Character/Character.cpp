@@ -1,6 +1,3 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
 
 #include "Character.h"
 Character::Character(string _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer) {
@@ -46,4 +43,6 @@ bool Character::flee(Character*target) {
 
     int chance = rand() % 100;
     return chance > 30;
+
+
 }
