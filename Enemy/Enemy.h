@@ -24,14 +24,6 @@ public:
     Action takeAction(vector<Player*> partyMembers);
 
     int getExperience();
-
-    double getMaxHealth();
-
-    void setAttack(double d);
-
-    double getBaseAttack();
-
-    int getBlockChance();
 };
 
 
