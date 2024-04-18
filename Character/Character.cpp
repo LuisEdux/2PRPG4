@@ -4,7 +4,7 @@
 
 #include "Character.h"
 #include <iostream>
-#include <cstring> // Para funciones de cadena de C
+#include <cstring> 
 
 using namespace std;
 
