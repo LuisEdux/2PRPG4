@@ -19,7 +19,7 @@ protected:
     int maxHealth;
     int maxDefense;
 public:
-    Character(char* _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer); // Cambio de string a char en el constructor
+    Character(char* _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer); 
 
     virtual void doAttack(Character *target) = 0;
     virtual void takeDamage(int damage) = 0;
