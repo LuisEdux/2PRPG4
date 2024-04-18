@@ -41,10 +41,10 @@ int Character::getSpeed() {
 }
 
 char* Character::toString() {
-    // Utiliza snprintf para construir la cadena de caracteres de salida
+    
     char buffer[256];
     snprintf(buffer, sizeof(buffer), "Name: %s\nHealth: %d\nAttack: %d\nDefense: %d\nSpeed: %d", name, health, attack, defense, speed);
-    // Devuelve una copia de buffer
+    
     return strdup(buffer);
 }
 
