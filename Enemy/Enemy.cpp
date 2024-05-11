@@ -1,11 +1,6 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
-
 #include "Enemy.h"
 #include "../Utils.h"
 #include <iostream>
-
 
 using namespace std;
 using namespace combat_utils;
@@ -25,11 +20,19 @@ void Enemy::takeDamage(int damage) {
     cout << name << " Recibio " << trueDamage << " de damage!" << endl;
     if(health <= 0) {
         cout << name << " Ha sido Derrotado" << endl;
+
+
+
+
     }
+
+
 }
 
 int Enemy::getExperience() {
-    return experience;
+
+
+
 }
 
 Character* Enemy::selectTarget(vector<Player*> possibleTargets) {
@@ -45,6 +48,8 @@ Character* Enemy::selectTarget(vector<Player*> possibleTargets) {
     return target;
 }
 
+
+
 Action Enemy::takeAction(vector<Player*> partyMembers) {
     int chance  = 1 + rand() % (101 - 1);
     Action currentAction;
@@ -55,6 +60,7 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {
         currentAction.action = [this]() {
             defend();
         };
+
         currentAction.speed = 999999;
 
     } else {
@@ -64,7 +70,9 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {
             doAttack(target);
         };
         currentAction.speed = getSpeed();
+
     }
 
     return currentAction;
+
 }

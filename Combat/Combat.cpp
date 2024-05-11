@@ -1,7 +1,3 @@
-//
-// Created by Victor Navarro on 19/02/24.
-//
-
 #include "Combat.h"
 #include <cstring>
 #include <algorithm>
@@ -15,11 +11,11 @@ bool compareSpeed(Character *a, Character *b) {
 
 Combat::Combat(vector<Character *> _participants) {
     participants = std::move(_participants);
-    for(auto participant : participants) {
+    for (auto participant : participants) {
         if (participant->getIsPlayer()) {
-            partyMembers.push_back((Player *) participant);
-        } else {
-            enemies.push_back((Enemy *) participant);
+    partyMembers.push_back((Player *) participant);
+    } else {
+     enemies.push_back((Enemy *) participant);
         }
     }
 }
@@ -38,7 +34,7 @@ Combat::Combat() {
 
 void Combat::addParticipant(Character *participant) {
     participants.push_back(participant);
-    if(participant->getIsPlayer()){
+    if (participant->getIsPlayer()) {
         partyMembers.push_back((Player*) participant);
     } else {
         enemies.push_back((Enemy*) participant);
@@ -53,17 +49,17 @@ void Combat::combatPrep() {
 char* Combat::toString() {
     string result = "";
     vector<Character*>::iterator it;
-    for(it = participants.begin(); it != participants.end(); it++){
+    for (it = participants.begin(); it != participants.end(); it++) {
         result += (*it)->toString();  "\n";
     }
-    cout<<"===================="<<endl;
+    cout << "====================" << endl;
     return strdup(result.c_str());
 }
 
 Character* Combat::getTarget(Character* attacker) {
     vector<Character*>::iterator it;
-    for(it = participants.begin(); it != participants.end(); it++){
-        if((*it)->getIsPlayer() != attacker->getIsPlayer()){
+    for (it = participants.begin(); it != participants.end(); it++) {
+        if ((*it)->getIsPlayer() != attacker->getIsPlayer()) {
             return *it;
         }
     }
@@ -72,12 +68,12 @@ Character* Combat::getTarget(Character* attacker) {
 }
 
 void Combat::doCombat() {
-    cout<< "Inicio del combate" << endl;
+    cout << "Inicio del combate" << endl;
     combatPrep();
     int round = 1;
     // Este while representa las rondas del combate
-    while(enemies.size() > 0 && partyMembers.size() > 0) {
-        cout<<"Round " << round << endl;
+    while (enemies.size() > 0 && partyMembers.size() > 0) {
+        cout << "Round " << round << endl;
         vector<Character*>::iterator it = participants.begin();
         registerActions(it);
         executeActions(it);
@@ -85,7 +81,7 @@ void Combat::doCombat() {
         round++;
     }
 
-    if(enemies.empty()) {
+    if (enemies.empty()) {
         cout << "You win!" << endl;
     } else {
         cout << "You lose!" << endl;
@@ -93,17 +89,20 @@ void Combat::doCombat() {
 }
 
 void Combat::executeActions(vector<Character*>::iterator participant) {
-    while(!actionQueue.empty()) {
+    while (!actionQueue.empty()) {
         Action currentAction = actionQueue.top();
         currentAction.action();
         actionQueue.pop();
+    if (currentAction.target != nullptr) {
+      checkParticipantStatus(*participant);
+     checkParticipantStatus(currentAction.target);
+    if (currentAction.target->getHealth() <= 0 && !currentAction.target->getIsPlayer()) {
+  for (Player* player : partyMembers) {player->levelUp();
 
-        // Revisa si hay personajes muertos
-        if(currentAction.target != NULL) {
-            checkParticipantStatus(*participant);
-            checkParticipantStatus(currentAction.target);
-        }
+      }
+     }
     }
+  }
 }
 
 void Combat::checkParticipantStatus(Character *participant) {
@@ -118,8 +117,8 @@ void Combat::checkParticipantStatus(Character *participant) {
 }
 
 void Combat::registerActions(vector<Character*>::iterator participantIterator) {
-    // Este while representa el turno de cada participante
-    // La elección que cada personaje elige en su turno
+    //Este while representa el turno de cada participante
+    //La eleccion que cada personaje elije en su turno
     while(participantIterator != participants.end()) {
         if((*participantIterator)->getIsPlayer()) {
             Action playerAction = ((Player*) *participantIterator)->takeAction(enemies);

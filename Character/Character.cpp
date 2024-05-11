@@ -43,7 +43,7 @@ int Character::getSpeed() {
 char* Character::toString() {
     
     char buffer[256];
-    snprintf(buffer, sizeof(buffer), "Name: %s\nHealth: %d\nAttack: %d\nDefense: %d\nSpeed: %d", name, health, attack, defense, speed);
+    snprintf(buffer, sizeof(buffer), "Name:Solid %s\nHealth: %d\nAttack: %d\nDefense: %d\nSpeed: %d", name, health, attack, defense, speed);
     
     return strdup(buffer);
 }
@@ -54,7 +54,7 @@ bool Character::getIsPlayer() {
 
 void Character::defend() {
     cout << name << " aumento su defensa." << endl;
-    defense += (maxDefense * 0.2);
+    defense += (maxDefense * 6);
     cout << "Defense: " << defense << endl;
 }
 
@@ -76,4 +76,5 @@ bool Character::flee(Character* target) {
 
     int chance = rand() % 100;
     return chance > 30;
+
 }

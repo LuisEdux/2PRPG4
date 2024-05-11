@@ -12,24 +12,36 @@
 class Enemy;
 
 class Player: public Character {
-    //TODO: Implementar Clases (Mago, Guerrero, Pícaro, etc.)
-    //TODO: Implementar Inventario
+    //TODO: Implement Classes (Mage, Warrior, Rogue, etc..)
+    //TODO: Implement Inventory
 private:
     int level;
     int experience;
 
-    void levelUp();
+    void saveProgress();
 public:
-    Player(char* _name, int _health, int _attack, int _defense, int _speed); // Cambio de string a char
+    Player(char* _name, int _health, int _attack, int _defense, int _speed);
+    Player(char* _name, int _health, int _attack, int _defense, int _speed, bool isPlayer, int _level, int _experience);
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
     Character* selectTarget(vector<Enemy*> possibleTargets);
     Action takeAction(vector<Enemy*> enemies);
+    char* serialize();
+    static Player* unserialize(char* buffer);
 
     void gainExperience(int exp);
+    static const unsigned int BUFFER_SIZE = sizeof (name) + sizeof(health) + sizeof(attack) + sizeof(defense) + sizeof(speed) + sizeof(isPlayer) + sizeof(level) + sizeof(experience);
 
-    //TODO: Implementar uso de objeto
+    //TODO: Implement use object
     void displayStats() const;
+
+    void levelUp();
+
+private:
+    char buffer[Player::BUFFER_SIZE];
+
+
+
 };
 
 
