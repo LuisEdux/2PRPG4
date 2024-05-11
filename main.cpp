@@ -9,6 +9,7 @@ void Player::displayStats() const {
 
     cout << "=====================================" << endl;
     cout << "Estadisticas del Jugador:" << endl;
+    cout << "NIVEL " << level << endl;
     cout << "Name: " << name << endl;
     cout << "Health: " << health << endl;
     cout << "Attack: " << attack << endl;
