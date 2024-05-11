@@ -55,7 +55,7 @@ bool Character::getIsPlayer() {
 void Character::defend() {
     cout << name << " aumento su defensa." << endl;
     defense += (maxDefense * 6);
-    cout << "Defense: " << defense << endl;
+    cout << "Defensa: " << defense << endl;
 }
 
 void Character::unDefend() {

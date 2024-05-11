@@ -26,9 +26,7 @@ public:
     Action takeAction(vector<Player*> partyMembers);
 
     int getExperience();
-
-
-
+    void UpgrateEnemies();
 };
 
 

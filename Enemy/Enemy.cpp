@@ -9,6 +9,24 @@ Enemy::Enemy(char* _name, int _health, int _attack, int _defense, int _speed, in
     experience = _experience;
 }
 
+void Enemy::UpgrateEnemies(){
+    cout << "===================" << endl;
+    cout << " ATRIBUTOS DE " << name <<  endl;
+    cout << "===================" << endl;
+    health += 10;
+    attack += 4;
+    defense += 5;
+    speed += 10;
+    cout << " ATRIBUTOS " << endl;
+    cout << " Ataque " << attack << endl;
+    cout << " salud " << health << endl;
+    cout << " defensa " << defense << endl;
+    cout << " velocidad " << speed << endl;
+    cout << "===================" << endl;
+}
+
+
+
 void Enemy::doAttack(Character *target) {
     target->takeDamage(getRolledAttack(attack));
 }

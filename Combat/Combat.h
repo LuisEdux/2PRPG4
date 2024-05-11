@@ -29,6 +29,8 @@ public:
     void doCombat();
     void addParticipant(Character *participant);
     char* toString();
+
+    void displayEnemyStats();
 };
 
 

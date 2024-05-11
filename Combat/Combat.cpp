@@ -44,6 +44,10 @@ void Combat::addParticipant(Character *participant) {
 void Combat::combatPrep() {
     // Ordena los participantes por velocidad
     sort(participants.begin(), participants.end(), compareSpeed);
+    for (Enemy* enemy : enemies) {
+        enemy->UpgrateEnemies();
+    }
+
 }
 
 char* Combat::toString() {
@@ -68,7 +72,12 @@ Character* Combat::getTarget(Character* attacker) {
 }
 
 void Combat::doCombat() {
-    cout << "Inicio del combate" << endl;
+    char choice;
+    cout << " INICIAR PARTIDA == CLICK LETRA(S): ";
+    cin >> choice;
+    if (tolower(choice) == 'S') {
+        displayEnemyStats();
+    }
     combatPrep();
     int round = 1;
     // Este while representa las rondas del combate
@@ -130,4 +139,8 @@ void Combat::registerActions(vector<Character*>::iterator participantIterator) {
 
         participantIterator++;
     }
+}
+
+void Combat::displayEnemyStats() {
+
 }

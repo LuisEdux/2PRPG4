@@ -45,11 +45,13 @@ void Player::takeDamage(int damage) {
 void Player::levelUp() {
     level++;
     cout << getName() << " HA SUBIDO DE NIVEL- NUEVO NIVEL " << level << endl;
-    attack += 34;
-    health += 34;
-    speed += 34;
-
+    attack += 20;
+    health += 40;
+    speed += 40;
+    cout << "===============================================" << endl;
     cout << "LOS ATRIBUTOS DE " << getName() << " AUMENTARON" << endl;
+    cout << "===============================================" << endl;
+
 }
 
 void Player::gainExperience(int exp) {
@@ -104,6 +106,7 @@ Action Player::takeAction(std::vector<Enemy*> enemies) {
         case 3:
             saveProgress();
             return takeAction(enemies);
+
 
 
         default:
